@@ -1,0 +1,6 @@
+{
+  "name": "CredSense AI",
+  "description": "AI-Powered Secret Detection & Git History Security Platform with Git history analysis, entropy detection, Gemini-powered context verification, and risk prioritization.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
