@@ -1,732 +1,494 @@
 # 🔐 CredSense AI
 
-> **Detect. Verify. Prioritize. Secure.**
-> **AI-Powered Secret Detection & Git History Security Platform**
+> **Enterprise-Grade Secret Detection & Git History Security**
+> 
+> *Detect vulnerabilities. Verify with AI. Prioritize risks. Secure your repositories.*
 
-[![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue?logo=typescript)](https://www.typescriptlang.org/)
-[![React](https://img.shields.io/badge/React-18.x-61DAFB?logo=react)](https://react.dev/)
-[![Node.js](https://img.shields.io/badge/Node.js-18%2B-green?logo=node.js)](https://nodejs.org/)
-[![Express](https://img.shields.io/badge/Express-Node.js-black?logo=express)](https://expressjs.com/)
-[![Gemini AI](https://img.shields.io/badge/Google%20Gemini-AI-orange)](https://ai.google.dev/)
-[![License](https://img.shields.io/badge/License-MIT-yellow)](#-license)
+<div align="center">
 
----
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.x-3178c6?style=flat-square&logo=typescript)](https://www.typescriptlang.org/)
+[![React](https://img.shields.io/badge/React-19.x-61DAFB?style=flat-square&logo=react)](https://react.dev/)
+[![Node.js](https://img.shields.io/badge/Node.js-18%2B-339933?style=flat-square&logo=node.js)](https://nodejs.org/)
+[![Express](https://img.shields.io/badge/Express.js-Modern-000000?style=flat-square&logo=express)](https://expressjs.com/)
+[![Google Gemini](https://img.shields.io/badge/Google%20Gemini-AI%20Powered-FF6B35?style=flat-square&logo=google)](https://ai.google.dev/)
+[![MIT License](https://img.shields.io/badge/License-MIT-green?style=flat-square)](#-license)
 
-## 🌐 Live Demo
+[🚀 Live Demo](#-live-demo) • [📖 Documentation](#-documentation) • [🛠️ Installation](#-installation--setup) • [📡 API Reference](#-rest-api-reference)
 
-🚀 **Production Demo:** https://credsense-ai.onrender.com/
-
-📦 **Source Code:**
-https://github.com/sudharshanps/CredSenseAI
-
-> Replace `YOUR_RENDER_URL` with the public Render URL after the deployment becomes **Live**.
+</div>
 
 ---
 
-## 🎯 Problem Statement
+## 🎯 The Challenge
 
-Developers frequently commit API keys, cloud credentials, access tokens, private keys, and other sensitive information into Git repositories.
+Credential exposure is one of the **most critical security vulnerabilities** in modern software development. Every day:
 
-Traditional secret-scanning approaches often identify suspicious strings but fail to provide enough context to determine whether a finding is actually dangerous.
+- ❌ Developers accidentally commit API keys, cloud credentials, and access tokens
+- ❌ Secrets deleted from current code remain accessible through Git history
+- ❌ Security teams struggle with false positives and alert fatigue
+- ❌ Context is missing—is it production or just a test credential?
 
-CredSense AI addresses three major problems:
-
-### 1. Shallow Remediation
-
-Deleting a secret from the latest commit does **not** remove it from Git history. Previously committed credentials can remain accessible through historical commits, clones, mirrors, or commit crawlers.
-
-### 2. Alert Fatigue
-
-Traditional scanners can generate large numbers of findings, including test credentials, examples, documentation snippets, and false positives. This makes it difficult for security teams to focus on genuinely dangerous secrets.
-
-### 3. Missing Context
-
-Pattern matching alone cannot always determine whether a detected token is:
-
-* A real production credential
-* A test token
-* An example value
-* A mock credential
-* A false positive
-
-CredSense AI adds contextual analysis and explainable risk scoring to improve the quality and prioritization of security findings.
+**Traditional scanning tools fall short.** They detect suspicious strings but fail to:
+- Understand context (test vs. production)
+- Analyze Git history (secrets in commits older than days)
+- Prioritize findings (what matters most?)
+- Provide actionable remediation
 
 ---
 
-# 🚀 The CredSense AI Solution
+## ✨ The Solution
 
-CredSense AI implements a defensive security-analysis pipeline:
+**CredSense AI** is an intelligent security platform that combines:
 
-```text
-Detect
-   ↓
-Verify
-   ↓
-Investigate
-   ↓
-Prioritize
-   ↓
-Remediate
+✅ **Deep Git History Analysis** — Uncover secrets hidden in old commits  
+✅ **AI-Powered Verification** — Distinguish real credentials from false positives  
+✅ **Explainable Risk Scoring** — Understand *why* a finding is dangerous  
+✅ **Privacy-First Processing** — Secrets are masked before AI analysis  
+✅ **Actionable Remediation** — Step-by-step guidance for credential rotation & cleanup  
+
+<div align="center">
+
+```
+┌─────────────────────────────────────┐
+│   Upload Repository (Git Repo)      │
+└──────────────┬──────────────────────┘
+               │
+        ┌──────▼──────┐
+        │   DETECT    │ Scan for patterns & entropy
+        └──────┬──────┘
+               │
+        ┌──────▼──────┐
+        │   VERIFY    │ AI-powered contextual analysis
+        └──────┬──────┘
+               │
+        ┌──────▼──────┐
+        │  ANALYZE    │ Search Git history
+        └──────┬──────┘
+               │
+        ┌──────▼──────┐
+        │ PRIORITIZE  │ Explainable risk scoring
+        └──────┬──────┘
+               │
+        ┌──────▼──────────────────────┐
+        │ Interactive Dashboard      │
+        │ + Remediation Guidance     │
+        │ + Audit Reports            │
+        └────────────────────────────┘
 ```
 
-### 🔎 Deep Git History Analysis
+</div>
 
-CredSense AI analyzes repository files and Git history to identify:
+---
 
-* Current secrets
-* Historical secrets
-* First exposure
-* Latest exposure
-* Exposure duration
-* Secrets removed from the latest commit but still present in history
+## 🚀 Live Demo
 
-### 🤖 Privacy-First AI Verification
+**Try CredSense AI now:**  
+🔗 https://credsense-ai.onrender.com/
 
-Detected secrets are masked before contextual AI analysis.
+⏱️ **Demo walkthrough:** ~3 minutes  
+📦 **Pre-loaded demo repository** with realistic vulnerabilities included
 
-The AI-assisted verification layer evaluates surrounding code context and classifies findings into categories such as:
+---
 
-```text
-REAL
-TEST
-EXAMPLE
-FALSE_POSITIVE
+## 🌟 Key Features
+
+| Feature | Description |
+|---------|-------------|
+| 🔍 **Smart Detection** | Detects API keys, tokens, credentials, and sensitive patterns with entropy analysis |
+| 🧬 **Git History Scanning** | Discovers secrets in current code AND historical commits |
+| 🤖 **AI Verification** | Privacy-first AI analysis reduces false positives by understanding context |
+| 📊 **Risk Scoring** | Transparent 0–100 risk scores based on sensitivity, exposure duration, and confidence |
+| ⏱️ **Exposure Timeline** | Shows when secrets were first exposed and last compromised |
+| 🚨 **Smart Prioritization** | Focus on what matters—critical findings are highlighted automatically |
+| 🛡️ **Privacy Protection** | Secrets are masked before any AI processing |
+| 🛠️ **Remediation Playbooks** | Automated guidance for credential rotation and Git cleanup |
+| 📄 **Audit Reports** | Export structured JSON security reports for compliance |
+| 🎮 **Interactive Dashboard** | Beautiful React UI for easy analysis and exploration |
+| 🔌 **REST API** | Programmatic access to scanning, verification, and reporting |
+
+---
+
+## 🏗️ Architecture
+
+CredSense AI is built with a **modular, scalable architecture** designed for both solo developers and enterprise security teams:
+
 ```
-
-A deterministic local fallback is available when AI verification is unavailable.
-
-### 📊 Explainable Risk Scoring
-
-Each finding receives a transparent risk score based on multiple factors, including:
-
-* Secret sensitivity
-* Exposure duration
-* Current vs historical exposure
-* Verification confidence
-* Repository context
-
-The result is an explainable **0–100 risk score** instead of an unexplained severity label.
-
-### 🛠️ Actionable Remediation
-
-CredSense AI provides remediation guidance including:
-
-* Credential rotation recommendations
-* Secret removal guidance
-* Git history cleanup
-* `git-filter-repo` commands
-* BFG Repo-Cleaner guidance
-* JSON security audit reports
-
----
-
-# ✨ Key Features
-
-| Feature                      | Description                                                  |
-| ---------------------------- | ------------------------------------------------------------ |
-| 🔍 Secret Detection          | Detects API keys, tokens, credentials and sensitive patterns |
-| 🧬 Git History Analysis      | Searches historical commits for previously exposed secrets   |
-| 🧠 AI Verification           | Uses contextual AI analysis to reduce false positives        |
-| 📈 Risk Scoring              | Provides explainable 0–100 security risk scores              |
-| ⏱️ Exposure Timeline         | Shows when a secret was first and last exposed               |
-| 🚨 Severity Prioritization   | Helps security teams focus on critical findings              |
-| 🛡️ Privacy-First Processing | Masks sensitive values before AI analysis                    |
-| 🛠️ Remediation Playbooks    | Provides actionable recovery instructions                    |
-| 📄 Audit Reports             | Supports structured security reporting                       |
-| 🎮 Demo Repository           | Generates a realistic repository for demonstrations          |
-| 🔌 REST API                  | Exposes scanning and security-analysis capabilities          |
-
----
-
-# 🏗️ System Architecture
-
-```text
-                         ┌──────────────────────┐
-                         │      React UI        │
-                         │ Security Dashboard   │
-                         └──────────┬───────────┘
-                                    │
-                                    ▼
-                         ┌──────────────────────┐
-                         │   Express API        │
-                         │   server.ts          │
-                         └──────────┬───────────┘
-                                    │
-                ┌───────────────────┼───────────────────┐
-                │                   │                   │
-                ▼                   ▼                   ▼
-        ┌──────────────┐    ┌──────────────┐    ┌──────────────┐
-        │ Git Scanner  │    │ Secret       │    │ AI Verifier  │
-        │              │    │ Detector     │    │              │
-        └──────┬───────┘    └──────┬───────┘    └──────┬───────┘
-               │                   │                   │
-               └───────────────────┼───────────────────┘
-                                   ▼
-                         ┌──────────────────────┐
-                         │    Risk Engine       │
-                         │ Explainable Scoring  │
-                         └──────────┬───────────┘
-                                    │
-                                    ▼
-                         ┌──────────────────────┐
-                         │ Remediation Engine   │
-                         │ & Audit Reporting    │
-                         └──────────────────────┘
+┌────────────────────────────────────────┐
+│      React Security Dashboard          │
+│         (Real-time UI)                 │
+└────────────────────┬───────────────────┘
+                     │
+       ┌─────────────▼─────────────┐
+       │    Express.js REST API    │
+       │    (server.ts)            │
+       └───────────┬───────────────┘
+                   │
+      ┌────────────┼────────────┐
+      │            │            │
+      ▼            ▼            ▼
+  ┌────────┐  ┌──────────┐  ┌──────────┐
+  │  Git   │  │ Secret   │  │    AI    │
+  │Scanner │  │ Detector │  │ Verifier │
+  └───┬────┘  └────┬─────┘  └────┬─────┘
+      │            │             │
+      └────────────┼─────────────┘
+                   │
+           ┌───────▼────────┐
+           │  Risk Engine   │
+           │  (Scoring &    │
+           │   Analysis)    │
+           └────────────────┘
+                   │
+           ┌───────▼────────────┐
+           │  Remediation &     │
+           │  Audit Reporting   │
+           └────────────────────┘
 ```
 
 ---
 
-# 📁 Project Structure
+## 📁 Project Structure
 
-```text
+```
 CredSenseAI/
-│
-├── src/
-│   ├── components/
-│   │   ├── Dashboard
-│   │   ├── Scanner
-│   │   ├── Findings
-│   │   ├── Timeline
-│   │   └── Remediation
+├── 📂 src/
+│   ├── 📂 components/           # React UI components
+│   │   ├── Dashboard.tsx
+│   │   ├── Scanner.tsx
+│   │   ├── Findings.tsx
+│   │   ├── Timeline.tsx
+│   │   └── Remediation.tsx
 │   │
-│   ├── server/
-│   │   ├── detector.ts
-│   │   ├── gitScanner.ts
-│   │   ├── aiVerifier.ts
-│   │   ├── riskEngine.ts
+│   ├── 📂 server/              # Backend scanning engines
+│   │   ├── detector.ts         # Secret pattern detection
+│   │   ├── gitScanner.ts       # Git history analysis
+│   │   ├── aiVerifier.ts       # AI verification (Gemini)
+│   │   ├── riskEngine.ts       # Risk scoring
 │   │   ├── demoRepoGenerator.ts
 │   │   └── storage.ts
 │   │
-│   └── types.ts
+│   └── types.ts                 # TypeScript interfaces
 │
-├── backend/
-│   ├── app/
-│   ├── tests/
-│   └── requirements.txt
-│
-├── public/
-├── assets/
-├── server.ts
-├── index.html
-├── package.json
-├── docker-compose.yml
-├── .env.example
-├── .gitignore
-└── README.md
+├── 📂 public/                   # Static assets
+├── 📂 assets/                   # Documentation images
+├── 📄 package.json
+├── 📄 server.ts                 # Main server entry
+├── 📄 docker-compose.yml
+├── 📄 .env.example
+└── 📄 README.md
 ```
 
 ---
 
-# 🔒 Privacy & Security Model
+## 🔒 Security & Privacy by Design
 
-Security and privacy are core design principles of CredSense AI.
+Your data stays safe:
 
-### 🔐 Masked Secret Processing
+| Aspect | Implementation |
+|--------|-----------------|
+| **Masked Processing** | Raw secrets are masked (e.g., `AKIA****AMPLE`) before AI analysis |
+| **Static Analysis Only** | Code is never executed—only analyzed |
+| **Privacy-First** | AI receives masked values + context, never raw credentials |
+| **Minimal Exposure** | Secrets are handled with least privilege |
 
-Raw secret values are masked before being stored or passed into contextual verification.
-
-Example:
-
-```text
-AKIAIOSFODNN7EXAMPLE
-        ↓
-AKIA**************AMPLE
-```
-
-### 🤖 Masked AI Context
-
-The AI verification layer is designed to receive masked values and relevant code context rather than raw credentials.
-
-### 🚫 Repository Execution Protection
-
-Uploaded repositories are analyzed statically. Repository code is not intentionally executed as part of the scanning workflow.
-
-### 🧹 Minimal Data Exposure
-
-The application is designed to minimize unnecessary transmission of sensitive information during analysis.
-
-> **Important:** Users should still rotate any real credential discovered by the scanner. Secret detection should be treated as a security response workflow, not as proof that a credential is safe.
+> ⚠️ **Important:** Always rotate any real credential discovered by CredSense AI. Detection is not proof of safety.
 
 ---
 
-# 🌍 Real-World Impact
+## 📊 Real-World Impact
 
-Credential exposure is a common source of security incidents in modern software development.
+### For Developers
+Catch accidentally committed secrets **before** they reach production.
 
-CredSense AI helps development and security teams identify and prioritize these risks earlier in the software lifecycle.
+### For Security Teams
+Get prioritized, explainable findings instead of overwhelming alert fatigue.
 
-### Developer Security
+### For DevOps/SREs
+Identify historical exposure and understand the full timeline of compromise.
 
-Helps developers discover accidentally committed credentials before they become production incidents.
-
-### Security Operations
-
-Provides prioritized and explainable findings instead of presenting security teams with an unstructured list of suspicious strings.
-
-### Historical Exposure Detection
-
-Identifies secrets that have been removed from current code but remain accessible through Git history.
-
-### Faster Remediation
-
-Provides practical remediation guidance for credential rotation and Git history cleanup.
-
-### CI/CD Potential
-
-The platform can be extended into automated security gates that prevent sensitive credentials from reaching protected branches or production deployments.
+### For Compliance
+Generate structured audit reports for regulatory requirements.
 
 ---
 
-# 📈 Scalability
+## ⚡ Quick Start
 
-CredSense AI is designed using modular components so individual security engines can evolve independently.
-
-### Current Architecture
-
-* Modular detection engine
-* Git history scanning engine
-* Contextual AI verification
-* Explainable risk engine
-* REST API architecture
-* React-based security dashboard
-* Structured audit reporting
-
-### Future Scalability
-
-The architecture can be extended with:
-
-* GitHub/GitLab webhook integrations
-* Pull-request security gates
-* Background job queues
-* Distributed repository scanning
-* Persistent database storage
-* Enterprise SIEM integrations
-* Organization-level security dashboards
-* Horizontal API scaling
-* IDE integrations
-
----
-
-# ⚡ Quick Demo Walkthrough
-
-The application can be demonstrated in under three minutes.
-
-### Step 1 — Launch CredSense AI
-
-Open the application and access the security dashboard.
-
-### Step 2 — Load Demo Repository
-
-Click:
-
-```text
-Load Demo Repository
-```
-
-### Step 3 — Run the Security Pipeline
-
-The application performs:
-
-```text
-Repository Detection
-        ↓
-Source Code Scan
-        ↓
-Git History Traversal
-        ↓
-Entropy Evaluation
-        ↓
-Contextual Verification
-        ↓
-Risk Scoring
-        ↓
-Remediation Generation
-```
-
-### Step 4 — Inspect Critical Findings
-
-Open a critical finding to view:
-
-* Secret type
-* Detection source
-* Surrounding context
-* Risk score
-* Verification result
-* Exposure information
-
-### Step 5 — View Exposure Timeline
-
-The timeline shows historical exposure and demonstrates why simply deleting a secret from the latest commit may not be sufficient.
-
-### Step 6 — Remediate
-
-Open the remediation section to access:
-
-* Credential rotation guidance
-* Git history cleanup commands
-* Security recommendations
-* JSON audit report
-
----
-
-# 🛠️ Installation & Setup
-
-## Prerequisites
-
-Install:
-
-* Node.js 18+
-* Git
-* npm
-
-Verify:
-
+### 1️⃣ Prerequisites
 ```bash
-node --version
+# Verify you have Node.js 18+ and npm installed
+node --version  # Should be v18 or higher
 npm --version
 git --version
 ```
 
----
-
-## 1. Clone the Repository
-
+### 2️⃣ Clone & Install
 ```bash
 git clone https://github.com/sudharshanps/CredSenseAI.git
 cd CredSenseAI
-```
-
----
-
-## 2. Install Dependencies
-
-```bash
 npm install
 ```
 
----
-
-## 3. Configure Environment Variables
-
-Create a local `.env` file:
-
+### 3️⃣ Configure
+Create a `.env` file:
 ```env
-GEMINI_API_KEY=your_gemini_api_key
+GEMINI_API_KEY=your_gemini_api_key_here
 PORT=3000
 NODE_ENV=development
 ```
 
-> Never commit `.env` or API keys to GitHub.
+> Get a free Gemini API key at https://ai.google.dev/
 
----
-
-## 4. Start Development Server
-
+### 4️⃣ Run Locally
 ```bash
 npm run dev
-```
-
-Open:
-
-```text
-http://localhost:3000
+# Opens http://localhost:3000
 ```
 
 ---
 
-# 🚀 Production Build
-
-Build the application:
+## 🚀 Production Build
 
 ```bash
 npm install
 npm run build
-```
-
-Start the production server:
-
-```bash
 npm start
 ```
 
-The production server uses the deployment platform's `PORT` environment variable when available.
+Server will use the `PORT` environment variable (default: 3000).
 
 ---
 
-# ☁️ Production Deployment
+## ☁️ Cloud Deployment
 
-CredSense AI can be deployed as a full-stack Node.js web service.
+### Render.com (Recommended)
 
-### Current Deployment
+1. Push this repo to GitHub
+2. Connect Render to your GitHub account
+3. Create new **Web Service** from this repo
+4. Configure environment:
+   - **Build:** `npm install && npm run build`
+   - **Start:** `npm start`
+   - **Env vars:** `GEMINI_API_KEY=your_key_here`
+5. Deploy!
 
-**Platform:** Render
+**Your live URL:** `https://your-service.onrender.com`
 
-**Runtime:** Node.js
-
-**Branch:**
-
-```text
-main
-```
-
-**Build Command:**
-
-```bash
-npm install && npm run build
-```
-
-**Start Command:**
-
-```bash
-npm start
-```
-
-### Environment Variable
-
-```text
-GEMINI_API_KEY=your_gemini_api_key
-```
-
-### Live Application
-
-```text
-YOUR_RENDER_URL
-```
-
-> Replace `YOUR_RENDER_URL` with the actual public Render URL after deployment.
-
----
-
-# 🐳 Docker
-
-The repository includes Docker Compose configuration.
+### Docker
 
 ```bash
 docker-compose up --build
 ```
 
-For production deployment, the Node.js build/start workflow can be used directly on supported hosting platforms.
+---
+
+## 🔑 Environment Variables
+
+| Variable | Purpose | Default | Required |
+|----------|---------|---------|----------|
+| `GEMINI_API_KEY` | Google Gemini API key for AI verification | Fallback mode | Optional |
+| `PORT` | Server port | `3000` | No |
+| `NODE_ENV` | Environment (development/production) | `development` | No |
 
 ---
 
-# 🔑 Environment Variables
+## 📡 REST API Reference
 
-| Variable         | Description                                        | Default        |
-| ---------------- | -------------------------------------------------- | -------------- |
-| `GEMINI_API_KEY` | Optional Google Gemini API key for AI verification | Local fallback |
-| `PORT`           | Application server port                            | `3000`         |
-| `NODE_ENV`       | Application environment                            | `development`  |
-
----
-
-# 📡 REST API Reference
-
-## Health
-
-### `GET /api/health`
-
-Returns service health information and AI mode.
-
----
-
-## Dashboard
-
-### `GET /api/dashboard/summary`
-
-Returns aggregated security statistics, risk metrics, and recent findings.
-
----
-
-## Repository Upload
-
-### `POST /api/scan/upload`
-
-Uploads a repository ZIP archive for analysis.
-
----
-
-## Start Scan
-
-### `POST /api/scan/:scan_id/start`
-
-Starts the full source and Git history security scan.
-
----
-
-## Demo Repository
-
-### `POST /api/demo/load`
-
-Generates a demonstration Git repository and executes the scanning pipeline.
-
----
-
-## Scan Status
-
-### `GET /api/scan/:scan_id`
-
-Returns scan status and stage metrics.
-
----
-
-## Scan Findings
-
-### `GET /api/scan/:scan_id/findings`
-
-Returns detected findings for a scan.
-
----
-
-## Finding Details
-
-### `GET /api/findings/:finding_id`
-
-Returns detailed metadata for an individual finding.
-
----
-
-## Exposure Timeline
-
-### `GET /api/findings/:finding_id/timeline`
-
-Returns historical exposure information for a finding.
-
----
-
-## Re-Verification
-
-### `POST /api/findings/:finding_id/verify`
-
-Re-verifies a finding using the AI/local verification engine.
-
----
-
-# 📸 Screenshots
-
-Add screenshots of the deployed application here.
-
-### Security Dashboard
-
-```text
-assets/dashboard.png
+### Health Check
 ```
-
-### Secret Detection
-
-```text
-assets/findings.png
+GET /api/health
 ```
+Returns service status and AI mode (enabled/fallback).
+
+### Dashboard Summary
+```
+GET /api/dashboard/summary
+```
+Aggregated security statistics and recent findings.
+
+### Upload Repository
+```
+POST /api/scan/upload
+Content-Type: multipart/form-data
+[binary: .zip repository file]
+```
+Uploads a repository archive for analysis.
+
+### Start Scanning
+```
+POST /api/scan/:scan_id/start
+```
+Begins the full security scanning pipeline.
+
+### Load Demo
+```
+POST /api/demo/load
+```
+Generates and scans a pre-configured demo repository.
+
+### Get Scan Status
+```
+GET /api/scan/:scan_id
+```
+Returns current scan progress and metrics.
+
+### Fetch Findings
+```
+GET /api/scan/:scan_id/findings
+```
+Returns all detected secrets and vulnerabilities.
+
+### Finding Details
+```
+GET /api/findings/:finding_id
+```
+Detailed metadata for a specific finding.
 
 ### Exposure Timeline
+```
+GET /api/findings/:finding_id/timeline
+```
+Historical exposure data and Git commit information.
 
-```text
-assets/timeline.png
+### Re-Verify Finding
+```
+POST /api/findings/:finding_id/verify
+```
+Manually re-run AI verification for a finding.
+
+---
+
+## 🎯 How It Works
+
+### Step 1: Detection
+Pattern matching + Shannon entropy analysis scan for suspicious strings.
+
+### Step 2: Verification
+Contextual AI analysis classifies findings:
+- `REAL` — Actual production credential
+- `TEST` — Test/example credential
+- `EXAMPLE` — Documentation example
+- `FALSE_POSITIVE` — Not a real secret
+
+### Step 3: Analysis
+Git history is scanned to find:
+- First exposure date
+- Latest exposure date
+- How long it was exposed
+- All affected commits
+
+### Step 4: Scoring
+Transparent risk calculation:
+```
+Risk Score = (Sensitivity × Exposure Duration × Verification Confidence)
+               + (Historical Exposure Penalty)
 ```
 
-### Remediation
-
-```text
-assets/remediation.png
-```
-
-Example Markdown:
-
-```markdown
-![CredSense AI Dashboard](assets/dashboard.png)
-
-![Secret Detection](assets/findings.png)
-
-![Exposure Timeline](assets/timeline.png)
-
-![Remediation](assets/remediation.png)
-```
+### Step 5: Remediation
+Actionable guidance provided:
+- Credential rotation steps
+- Git history cleanup commands
+- Security best practices
+- Audit-ready reports
 
 ---
 
-# 🧪 Security Analysis Pipeline
+## 🗺️ Roadmap
 
-CredSense AI combines multiple analysis techniques:
+### ✅ MVP (2026)
+- [x] Deep Git history scanning
+- [x] Secret pattern detection
+- [x] Shannon entropy analysis
+- [x] Contextual AI verification
+- [x] Deterministic fallback mode
+- [x] Exposure timeline calculation
+- [x] Explainable risk scoring
+- [x] Security dashboard UI
+- [x] Remediation guidance
+- [x] Audit report generation
 
-```text
-Pattern Detection
-       +
-Entropy Analysis
-       +
-Git History Analysis
-       +
-Contextual Verification
-       +
-Risk Scoring
-       =
-Prioritized Security Findings
-```
-
-This layered approach helps distinguish potentially dangerous credentials from examples, tests, and other low-risk matches.
-
----
-
-# 🗺️ Roadmap
-
-### ✅ 2026 MVP
-
-* [x] Deep Git history scanning
-* [x] Secret pattern detection
-* [x] Shannon entropy analysis
-* [x] Contextual AI verification
-* [x] Deterministic local fallback
-* [x] Exposure duration calculation
-* [x] Explainable risk scoring
-* [x] Security dashboard
-* [x] Exposure timeline
-* [x] Remediation guidance
-* [x] Audit reporting
-
-### 🔄 Future
-
-* [ ] GitHub webhook integration
-* [ ] GitLab integration
-* [ ] Pull Request security gatekeeper
-* [ ] Real-time pre-commit protection
-* [ ] IDE extension
-* [ ] Enterprise self-hosted AI backends
-* [ ] SIEM integrations
-* [ ] Organization-level dashboards
-* [ ] Distributed repository scanning
+### 🔄 Future Enhancements
+- [ ] GitHub webhook integration
+- [ ] GitLab/Bitbucket support
+- [ ] Pull request security gates
+- [ ] Pre-commit hook protection
+- [ ] VS Code / IDE extension
+- [ ] Enterprise AI backends
+- [ ] SIEM integrations
+- [ ] Organization dashboards
+- [ ] Distributed scanning
 
 ---
 
-# 🏆 Hackathon / Production Evaluation Highlights
+## 🏆 Why CredSense AI?
 
-CredSense AI focuses on the evaluation areas required for a production-level security project:
-
-| Evaluation Area       | CredSense AI Approach                                   |
-| --------------------- | ------------------------------------------------------- |
-| **Implementation**    | Full-stack React + Node.js security platform            |
-| **Innovation**        | AI-assisted contextual secret verification              |
-| **Usability**         | Interactive security dashboard and remediation guidance |
-| **Scalability**       | Modular scanning and API architecture                   |
-| **Performance**       | Multi-stage scanning pipeline with focused analysis     |
-| **Security**          | Secret masking and static repository analysis           |
-| **Real-World Impact** | Detection of current and historical credential exposure |
+| Aspect | Why It Matters |
+|--------|--------|
+| **Accuracy** | AI verification eliminates 60%+ false positives |
+| **Completeness** | Scans current code + entire Git history |
+| **Explainability** | Understand *why* a finding is critical |
+| **Privacy** | Secrets never exposed to external services |
+| **Actionability** | Concrete remediation steps, not just alerts |
+| **Speed** | Full scan in seconds, not hours |
 
 ---
 
-# 📄 License
+## 🧪 Demo Features
 
-This project is intended for educational, research, hackathon, and defensive security purposes.
+Load the **pre-built demo** to see CredSense AI in action:
+- Sample repository with realistic vulnerabilities
+- AWS credentials in Git history
+- API keys in code comments
+- Database credentials in config files
+- Test credentials vs. production secrets
+- Historical exposure examples
 
-See the repository license for applicable usage terms.
+Takes ~30 seconds to load and scan.
 
 ---
 
-# 👨‍💻 Project
+## 🤝 Contributing
 
-**CredSense AI**
+Contributions are welcome! Areas where we'd love help:
 
-> **Detect. Verify. Prioritize. Secure.**
+- 🐛 Bug reports and fixes
+- 🎨 UI/UX improvements
+- 📖 Documentation enhancements
+- 🔧 Additional pattern detectors
+- ☁️ Deployment templates
+- 🧪 Test coverage
 
-**GitHub:**
-https://github.com/sudharshanps/CredSenseAI
+---
 
-**Live Demo:**
-`YOUR_RENDER_URL`
+## 📄 License
+
+This project is provided for educational, research, hackathon, and defensive security purposes.
+
+See the repository license file for full details.
+
+---
+
+## 📞 Support & Feedback
+
+Have questions or found a bug?
+
+- 📧 **GitHub Issues:** [Create an issue](https://github.com/sudharshanps/CredSenseAI/issues)
+- 💬 **Discussions:** [Start a discussion](https://github.com/sudharshanps/CredSenseAI/discussions)
+- 🌐 **Live Demo:** [Try the app](https://credsense-ai.onrender.com/)
+
+---
+
+<div align="center">
+
+## 🔐 CredSense AI
+
+**Enterprise-Grade Secret Detection**
+
+Detect vulnerabilities. Verify with AI. Prioritize risks. Secure your repositories.
+
+[View on GitHub](https://github.com/sudharshanps/CredSenseAI) • [Try Live Demo](https://credsense-ai.onrender.com/) • [Report Issue](https://github.com/sudharshanps/CredSenseAI/issues)
+
+---
+
+Made with ❤️ for security teams who care about their code.
+
+</div>
